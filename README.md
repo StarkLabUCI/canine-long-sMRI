@@ -9,4 +9,4 @@ _**Please cite if using any part of this repository:**_ Noche et al. (2024) Age-
 
 Please contact Jessica Noche at nochej@uci.edu for help.
 
-Make sure anat files are in BIDs format before proceeding. (https://github.com/NILAB-UvA/bidsify) This script assumes each subject has multiple sessions. It can be easily modified for single session analysis.
+Make sure anat files are in BIDs format before proceeding. (https://github.com/NILAB-UvA/bidsify).
