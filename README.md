@@ -14,7 +14,7 @@ Make sure anat files are in BIDs format before proceeding. (https://github.com/N
 
 **Pipeline**:  
 1. `antsLongCT.sh` will run the ANTs longitudinal cortical thickness pipeline using modified ANTs scripts (`antsBrainExtraction_k9.sh` and `antsCorticalThickness_k9.sh`).
-2. `proc_singlesub.sh` is to be run on all subjects and will clean up the edges of the time point segmentations and calculate ROI statistics from each with `ROI_stats.sh`, will generate the log-Jacobian maps with `make_clean_logJacobian.sh`, and will generate the affine matrix from linear transformations between time point to SST and SST to template with `get_affine.sh`.
+2. `proc_singlesub.sh` will clean up the edges of the time point segmentations and calculate ROI statistics from each with `ROI_stats.sh`, will generate the log-Jacobian maps with `make_clean_logJacobian.sh`, and will generate the affine matrix from linear transformations between time point to SST and SST to template with `get_affine.sh`.
 3. `get_determinant.py` extracts the determinant of each affine matrix to be used as a proxy for intracranial volume (ICV). ROI volumes are then adjusted for ICV with `regressICV.py`.
 4. `3dLMEr_logJacobians.sh` will run the AFNI program [3dLMEr](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLMEr.html) for a voxel-wise analysis of the log-Jacobian maps for conducting deformation-based morphometry.
 
