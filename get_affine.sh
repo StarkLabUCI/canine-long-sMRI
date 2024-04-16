@@ -18,7 +18,7 @@
 # Geometric properties of the determinant: https://mathinsight.org/determinant_geometric_properties
 
 # USAGE:
-# ./ICV_determinant.sh subID sess
+# ./get_affine.sh subID sess
 
 umask 002
 
@@ -27,7 +27,7 @@ echo Job name: $SLURM_JOB_NAME
 echo Submit host: $SLURM_SUBMIT_HOST
 echo "Node(s) used": $SLURM_JOB_NODELIST
 start=$(date +%s)
-echo +++ Running ICV_determinant.sh +++
+echo +++ Running get_affine.sh +++
 echo Started at: `date`
 
 echo Using $SLURM_CPUS_PER_TASK slots

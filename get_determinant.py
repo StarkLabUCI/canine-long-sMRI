@@ -56,8 +56,6 @@ for subj in subjects:
         det=np.linalg.det(notrans) # get determinant
         inv=np.linalg.inv(notrans) # get the inverse matrix
         detinv=np.linalg.det(inv) # get determinant of inverse matrix
-        # print('{} {} Determinant: {:.3f}'.format(subj,ses,det))
-        # print('{} {} Determinant on Inverse Matrix: {:.3f}'.format(subj,ses,detinv))
         sst_df.loc[subj,'SST_Det']=det
         sst_df.loc[subj,'SST_DetInv']=detinv
     else:
@@ -75,20 +73,15 @@ for ses in timepoints:
     print('ses-{}'.format(ses))
     timepoint_df=pd.DataFrame(index=subjects,columns=['{} Det'.format(ses)])
     for subj in subjects:
-        #timepoint='{0}/{1}/{1}_ses-{2}_T1w_RIP_{3}'.format(longCTdir,subj,ses,ses[-1])
         try:
             timepoint=glob.glob('{0}/{1}/{1}_ses-{2}_T1w_RIP_*'.format(longCTdir,subj,ses))[0]
             affine='{0}/{1}_ses-{2}_T1wtoUCItemplate_AffineOnly0GenericAffine.mat'.format(timepoint,subj,ses)
-            #affine='{0}/{1}_ses-{2}_InvertedBrainMasktoUCI_AffineOnly0GenericAffine.mat'.format(timepoint,subj,ses)
             full_mat=scipy.io.loadmat(affine,matlab_compatible=True)
             mat=full_mat['AffineTransform_double_3_3'].reshape((4,3))
-            #print(mat)
             notrans=mat[0:3,0:3] 
             det=np.linalg.det(notrans) # get determinant
             inv=np.linalg.inv(notrans) # get the inverse matrix
             detinv=np.linalg.det(inv) # get determinant of inverse matrix
-            # print('{} {} Determinant: {:.3f}'.format(subj,ses,det))
-            # print('{} {} Determinant on Inverse Matrix: {:.3f}'.format(subj,ses,detinv))
             timepoint_df.loc[subj,'{} Det'.format(ses)]=det
             timepoint_df.loc[subj,'{} DetInv'.format(ses)]=detinv
         except:
